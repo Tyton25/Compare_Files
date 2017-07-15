@@ -31,18 +31,23 @@ def main():
     t_file = opts.txtfile
     
     
-def compare_files(txtfile1,outfile,args_length):
+def compare_files(txtfile1,file_list,outfile,args_length):
   results_file = ''
+  count = 1
   master_file = file_to_var(txtfile1)
-  comp_file = 
+  
+  for file in range(len(filelist)):
+    compare_files(master_file,file)
   
   return results_file
 
-def file_to_var():
-  for line in input.readlines(txtfile1):
-    var_file = master_file + line + "\n"
-  
+def file_to_var(txtfile):
+  for line in input.readlines(txtfile):
+    var_file = var_file + line + "\n"
   return var_file
+
+def compare_files(file1,file2):
+  
 
 if __NAME__ == '__MAIN__':
     main()
