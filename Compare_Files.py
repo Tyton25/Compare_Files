@@ -10,12 +10,14 @@ def main():
   
   p.addOption('-o', '--output',
               type='string',
-              source='outfile',
+              action='store',
+              dest='outfile',
               nargs=1,
               help='Specifies the output file name.')
   p.addOption('-t', '--txt',
               type='string',
-              source='txtfile',
+              action='store',
+              dest='txtfile',
               nargs=1,
               help='Specifies the file with which other files are compared.')
   
