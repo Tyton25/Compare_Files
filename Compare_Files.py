@@ -3,10 +3,13 @@
 from optparse import OptionParser
 import realine, os, sys
 
+
 def main():
   t_file = ''
   t_file_dir = os.getenv('PWD')
   
+  start_time = time.strftime('%Y%m%d %H:%M:%S')
+  print('Start time is %s.' % start_time)
   
   p = OptionParser(usage: '%prog -t <input_file1.txt> <input_file2.txt>')
   
@@ -27,14 +30,19 @@ def main():
   if opts.txtfile:
     t_file = opts.txtfile
     
-def compare_files(txtfile,outfile,args_length):
+    
+def compare_files(txtfile1,outfile,args_length):
   results_file = ''
-  infile = ''
-  
-  for line in input.readlines(txtfile):
-    infile = infile + line + "\n"
+  master_file = file_to_var(txtfile1)
+  comp_file = 
   
   return results_file
+
+def file_to_var():
+  for line in input.readlines(txtfile1):
+    var_file = master_file + line + "\n"
+  
+  return var_file
 
 if __NAME__ == '__MAIN__':
     main()
