@@ -70,5 +70,5 @@ with open('some_output_file.txt', 'w') as FO:
     for line in same:
         FO.write(line)
   
-if __NAME__ == '__MAIN__':
+if __name__ == '__main__':
     main()
