@@ -36,14 +36,19 @@ def main():
     for file in 
       with open(
     
-def compare_files(txtfile1,file_list,outfile,args_length):
+def compare_files(file1,file2):
   results_file = ''
-  count = 1
-  master_file = file_to_var(txtfile1)
-  
-  for file in range(len(filelist)):
-    compare_files(master_file,file)
-  
+  count = 0
+
+  with open(file1, 'r') as f1:
+        with open(file2, 'r') as f2:
+        for row1, row2 in zip.iter(f1,f2):
+          if row1 != row2:
+            results_file = row1 + row2
+
+  with open('some_output_file.txt', 'w') as FO:
+    for line in same:
+        FO.write(line)
   return results_file
 
 def file_to_var(txtfile):
@@ -71,9 +76,7 @@ with open('output_ref.txt', 'r') as file1:
 if '\n' in same:
     same.remove('\n')
 
-with open('some_output_file.txt', 'w') as FO:
-    for line in same:
-        FO.write(line)
+
   
 if __name__ == '__main__':
     main()
