@@ -29,12 +29,12 @@ def main():
   
   if opts.txtfile:
     t_file = opts.txtfile
-    
+    t_file_list = []
     for item in range(len(sys.argv)):
-      t_file_list = 
+      t_file_list.append(item)
     
     for file in 
-    with open(
+      with open(
     
 def compare_files(txtfile1,file_list,outfile,args_length):
   results_file = ''
