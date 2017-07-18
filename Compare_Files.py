@@ -30,6 +30,11 @@ def main():
   if opts.txtfile:
     t_file = opts.txtfile
     
+    for item in range(len(sys.argv)):
+      t_file_list = 
+    
+    for file in 
+    with open(
     
 def compare_files(txtfile1,file_list,outfile,args_length):
   results_file = ''
