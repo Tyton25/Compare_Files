@@ -35,9 +35,9 @@ def main():
     
     for file in t_file_list:
       file2 = t_file_list[file]
-      compare_files(t_file,file2)
+      diff = compare_files(t_file,file2)
       file_out_path = get_output_path(file2,user_home_dir)
-      create_output_file(file_out_path)
+      create_output_file(file_out_path,diff)
     
 def compare_files(f1,f2):
   results_file = ''
@@ -49,9 +49,9 @@ def compare_files(f1,f2):
             if row1 != row2:
               results_file = row1 + row2
 
-def create_output_file(outfile):
-  with open('some_output_file.txt', 'w') as FO:
-    for line in results_file:
+def create_output_file(outfile,diff_var):
+  with open(outfile, 'wb') as FO:
+    for line in diff_var:
         FO.write(line)
   return FO
 
