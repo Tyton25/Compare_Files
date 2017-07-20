@@ -7,9 +7,8 @@ import realine, os, sys
 def main():
   user_home_dir = os.getenv('HOME')
   t_file = ''
-  t_file_dir = os.getenv('PWD')
-  
   start_time = time.strftime('%Y%m%d %H:%M:%S')
+  
   print('Start time is %s.' % start_time)
   
   p = OptionParser(usage: '%prog -t <input_file1.txt> <input_file2.txt>')
