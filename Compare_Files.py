@@ -5,6 +5,7 @@ import realine, os, sys
 
 
 def main():
+  user_home_dir = os.getenv('HOME')
   t_file = ''
   t_file_dir = os.getenv('PWD')
   
@@ -34,46 +35,37 @@ def main():
       t_file_list.append(item)
     
     for file in t_file_list:
-      compare_files(t_file,t_file_list[file])
+      file2 = t_file_list[file]
+      compare_files(t_file,file2)
+      file_out_path = get_output_path(file2,user_home_dir)
+      create_output_file(file_out_path)
     
-def compare_files(file1,file2):
+def compare_files(f1,f2):
   results_file = ''
   count = 0
 
   with open(file1, 'r') as f1:
         with open(file2, 'r') as f2:
-          for row1, row2 in zip.iter(f1,f2):
+          for row1, row2 in zip(f1,f2):
             if row1 != row2:
               results_file = row1 + row2
 
+def create_output_file(outfile):
   with open('some_output_file.txt', 'w') as FO:
-    for line in same:
+    for line in results_file:
         FO.write(line)
-  return results_file
+  return FO
 
-def file_to_var(txtfile):
-  for line in input.readlines(txtfile):
-    var_file = var_file + line + "\n"
-  return var_file
-
-def compare_files(file1,file2):
+def get_output_path(compfile,homedir):
+  while not compfile.endswith('.'):
+    compfile = compfile[:-1]
+  while compfile.endswith('.'):
+    compfile = compfile[:-1]
+    
+  output_file_path = homedir + "/" + compfile
+  output_file_path = os.path.normpath(output_file_path)
   
-def diff(a, b):
-    y = []
-    for x in a:
-        if x not in b:
-            y.append(x)
-        else:
-            b.remove(x)
-    return y
 
-with open('output_ref.txt', 'r') as file1:
-    with open('output_ref1.txt', 'r') as file2:
-        same = diff(list(file1), list(file2))
-        print same
-        print "\n"
 
 if __name__ == '__main__':
     main()
-
-Updated 7/15/2017
