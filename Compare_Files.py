@@ -61,10 +61,11 @@ def get_output_path(compfile,homedir):
     compfile = compfile[:-1]
   while compfile.endswith('.'):
     compfile = compfile[:-1]
-    
-  output_file_path = homedir + "/" + compfile
+  out_file_name = compfile + "_compare.txt" 
+  output_file_path = homedir + "/" + out_file_name
   output_file_path = os.path.normpath(output_file_path)
   
+  return output_file_path
 
 
 if __name__ == '__main__':
