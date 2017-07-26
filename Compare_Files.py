@@ -32,20 +32,26 @@ def main():
     t_file_list = []
     for item in range(len(sys.argv)):
       t_file_list.append(item)
+  else:
+    print "Please include a file for comparison."
+     p.print_help()
     
     for file in t_file_list:
       file2 = t_file_list[file]
-      diff = compare_files(t_file,file2)
       file_out_path = get_output_path(file2,user_home_dir)
       create_output_file(file_out_path,diff)
+      
+  if opts.outfile:
+    out_file = os.path.normpath(opts.outfile)
     
+      
 def compare_files(f1,f2):
   results_file = ''
   count = 0
 
   with open(file1, 'r') as f1:
         with open(file2, 'r') as f2:
-          for row1, row2 in zip(f1,f2):
+          outpur_file = get_output_path()
             if row1 != row2:
               results_file = row1 + row2
 
