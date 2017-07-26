@@ -6,9 +6,8 @@ import realine, os, sys
 
 def main():
   user_home_dir = os.getenv('HOME')
-  t_file = ''
-  start_time = time.strftime('%Y%m%d %H:%M:%S')
-  
+  t_file = ''  start_time = time.strftime('%Y%m%d %H:%M:%S')
+ 
 
   print('Start time is %s.' % start_time)
   
@@ -35,37 +34,35 @@ def main():
       t_file_list.append(item)
   else:
     print "Please include a file for comparison."
-     p.print_help()
-     sys.exit()
+    p.print_help()
+    sys.exit()
 
   if opts.outfile:
     output_dir = os.path.normpath(opts.outfile) + "/"
   else:
     output_dir = os.getenv('HOME') + "/"
 
-  for file in t_file_list:
-      file_to_compare = t_file_list[file]
-      output_file_path = get_output_path(file_to_compare,output_dir)
-      create_output_file(output_file_path,diff)
-
-def compare_files(f1,f2):
-  results_file = ''
-  count = 0
-
+  compare_files(t_file,t_file_list,output_file_path)
+  
+      
+def compare_files(file1,file_list,output_file):
   with open(file1, 'r') as f1:
+      for item in range(len(file_list))
         with open(file2, 'r') as f2:
-          output_file = get_output_path(out_file)
-            
+          file_to_compare = t_file_list[file]
+          output_file_path = get_output_path(file_to_compare,output_dir)
+          os.system('diff -B %s %s >' %(f1,f2,output_file))
+          
 def get_output_path(compfile,outdir):
   while not compfile.endswith('.'):
     compfile = compfile[:-1]
   while compfile.endswith('.'):
     compfile = compfile[:-1]
-  out_file_name = compfile + "_compare.txt" 
-  output_file_path = homedir + "/" + out_file_name
-  output_file_path = os.path.normpath(output_file_path)
+  out_filename = compfile + "_compare_results_.txt"
+  out_file_path = outdir + out_filename
+  out_file_path = os.path.normpath(out_file_path)
 
-  return output_file_path
+  return out_file_path
 
 
 if __name__ == '__main__':
