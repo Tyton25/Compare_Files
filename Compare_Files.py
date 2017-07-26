@@ -47,12 +47,13 @@ def main():
       
 def compare_files(file1,file_list,output_file):
   with open(file1, 'r') as f1:
-      for item in range(len(file_list))
+      for item in range(len(file_list)):
+        file_to_compare = t_file_list[file]
         with open(file2, 'r') as f2:
-          file_to_compare = t_file_list[file]
           output_file_path = get_output_path(file_to_compare,output_dir)
-          os.system('diff -B %s %s >' %(f1,f2,output_file))
-          
+          os.system('diff -B %s %s > %s' % (f1,f2,output_file))
+          os.system('gvim %s' % output_file_path)
+
 def get_output_path(compfile,outdir):
   while not compfile.endswith('.'):
     compfile = compfile[:-1]
