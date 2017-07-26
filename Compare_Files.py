@@ -44,7 +44,6 @@ def main():
 
   compare_files(t_file,t_file_list,output_file_path)
   
-      
 def compare_files(file1,file_list,output_file):
   with open(file1, 'r') as f1:
       for item in range(len(file_list)):
