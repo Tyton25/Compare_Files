@@ -9,6 +9,7 @@ def main():
   t_file = ''
   start_time = time.strftime('%Y%m%d %H:%M:%S')
   
+
   print('Start time is %s.' % start_time)
   
   p = OptionParser(usage: '%prog -t <input_file1.txt> <input_file2.txt>')
@@ -35,33 +36,27 @@ def main():
   else:
     print "Please include a file for comparison."
      p.print_help()
-    
-    for file in t_file_list:
-      file2 = t_file_list[file]
-      file_out_path = get_output_path(file2,user_home_dir)
-      create_output_file(file_out_path,diff)
-      
+     sys.exit()
+
   if opts.outfile:
-    out_file = os.path.normpath(opts.outfile)
-    
-      
+    output_dir = os.path.normpath(opts.outfile) + "/"
+  else:
+    output_dir = os.getenv('HOME') + "/"
+
+  for file in t_file_list:
+      file_to_compare = t_file_list[file]
+      output_file_path = get_output_path(file_to_compare,output_dir)
+      create_output_file(output_file_path,diff)
+
 def compare_files(f1,f2):
   results_file = ''
   count = 0
 
   with open(file1, 'r') as f1:
         with open(file2, 'r') as f2:
-          outpur_file = get_output_path()
-            if row1 != row2:
-              results_file = row1 + row2
-
-def create_output_file(outfile,diff_var):
-  with open(outfile, 'wb') as FO:
-    for line in diff_var:
-        FO.write(line)
-  return FO
-
-def get_output_path(compfile,homedir):
+          output_file = get_output_path(out_file)
+            
+def get_output_path(compfile,outdir):
   while not compfile.endswith('.'):
     compfile = compfile[:-1]
   while compfile.endswith('.'):
@@ -69,7 +64,7 @@ def get_output_path(compfile,homedir):
   out_file_name = compfile + "_compare.txt" 
   output_file_path = homedir + "/" + out_file_name
   output_file_path = os.path.normpath(output_file_path)
-  
+
   return output_file_path
 
 
